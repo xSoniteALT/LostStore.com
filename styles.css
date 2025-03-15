@@ -1,1 +1,50 @@
+/* Basic Styling for the Website */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.addon-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.addon-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.addon-card h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.addon-card p {
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.addon-card button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.addon-card button:hover {
+    background-color: #0056b3;
+}
 
