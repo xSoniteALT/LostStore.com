@@ -1,26 +1,26 @@
-// Firebase Auth Logic in script.js
+// Handle login functionality
+const loginForm = document.getElementById("login-form");
+const errorMessage = document.getElementById("error-message");
 
-// Get references to the DOM elements
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const signInButton = document.getElementById("signIn");
+loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-// Sign in function
-signInButton.addEventListener("click", () => {
-    const email = emailInput.value;
-    const password = passwordInput.value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-    // Firebase Authentication
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            // Signed in successfully
-            const user = userCredential.user;
-            console.log("Logged in as:", user.email);
-            window.location.href = "dashboard.html"; // Redirect to the dashboard or home
+            // Redirect to the next page after successful login
+            window.location.href = "dashboard.html"; // Example redirect
         })
         .catch((error) => {
             const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log("Error:", errorMessage);
+            const errorMessageText = error.message;
+            errorMessage.textContent = `Error: ${errorMessageText}`;
         });
 });
+
+// Discord Redirection
+function goToDiscord() {
+    window.location.href = "https://discord.gg/hPpHaZuR2R"; // Replace with your Discord invite link
+}
