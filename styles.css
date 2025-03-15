@@ -1,50 +1,55 @@
-/* Basic Styling for the Website */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    text-align: center;
     padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    text-align: center;
+    color: #333;
 }
 
-.addon-card {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
-}
-
-.addon-card img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-}
-
-.addon-card h3 {
-    font-size: 1.5rem;
-    margin-top: 10px;
-}
-
-.addon-card p {
-    font-size: 1rem;
+input[type="email"], input[type="password"], input[type="submit"] {
+    width: 100%;
+    padding: 10px;
     margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
-.addon-card button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+button {
+    padding: 10px;
+    background-color: #0073e6;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.addon-card button:hover {
-    background-color: #0056b3;
+button:hover {
+    background-color: #005bb5;
 }
-
