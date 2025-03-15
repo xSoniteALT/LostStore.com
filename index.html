@@ -3,64 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft Store</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file if you have one -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google Sign-In API -->
+    <title>Lost Store</title>
+
+    <!-- Link to your external CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Firebase SDK scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-storage.js"></script>
 </head>
 <body>
-    <!-- Google Sign-In Button -->
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <!-- Your HTML content here -->
+    <h1>Welcome to Lost Store</h1>
+    <!-- More HTML content -->
 
+    <!-- Link to your custom JavaScript file for logic -->
+    <script src="script.js"></script>
+
+    <!-- Firebase Initialization Script (you can add it in your script.js file) -->
     <script>
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            var email = profile.getEmail();
-            console.log("Email: " + email); // Log user email
+        // Your Firebase configuration and initialization code will go here
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
 
-            // Check if user is the admin (goodspotff@gmail.com)
-            if (email === "goodspotff@gmail.com") {
-                // If admin, show upload form
-                showAdminUploadForm();
-            } else {
-                // If regular user, show buy options
-                showUserBuyOptions();
-            }
-        }
-
-        // Admin Upload Form (for admins only)
-        function showAdminUploadForm() {
-            document.getElementById("admin-upload").style.display = "block";
-            document.getElementById("user-buy-options").style.display = "none"; // Hide buy options
-        }
-
-        // User Buy Options (for normal users only)
-        function showUserBuyOptions() {
-            document.getElementById("user-buy-options").style.display = "block";
-            document.getElementById("admin-upload").style.display = "none"; // Hide admin upload form
-        }
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const storage = firebase.storage();
     </script>
-
-    <!-- Admin Upload Form (hidden initially) -->
-    <div id="admin-upload" style="display: none;">
-        <h2>Upload New Addon</h2>
-        <form>
-            <input type="text" placeholder="Addon Title" id="addon-title" required><br><br>
-            <textarea placeholder="Addon Description" id="addon-description" required></textarea><br><br>
-            <input type="file" id="addon-image" accept="image/*" required><br><br>
-            <button type="submit">Upload Addon</button>
-        </form>
-    </div>
-
-    <!-- Addon Cards for Users -->
-    <div id="user-buy-options" style="display: none;">
-        <!-- Example Addon Card -->
-        <div class="addon-card">
-            <img src="addon1.jpg" alt="Addon Image">
-            <h3>Addon Title</h3>
-            <p>Addon Description</p>
-            <button onclick="window.location.href='https://discord.com/users/sonite12'">Buy and Join Discord</button>
-        </div>
-    </div>
-
 </body>
 </html>
