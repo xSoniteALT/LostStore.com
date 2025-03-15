@@ -3,56 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Minecraft Addons Store</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optional: Link to CSS if you have one -->
+    <title>Minecraft Store</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file if you have one -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google Sign-In API -->
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Minecraft Addons Store</h1>
-        <nav>
-            <ul>
-                <li><a href="#addons">Addons</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <section id="addons">
-            <h2>Minecraft Addons</h2>
-            <p>Here you can find and purchase various Minecraft addons that enhance your gameplay!</p>
-            <!-- Example addon item -->
-            <div class="addon-item">
-                <h3>Pro Trial Vault Addon</h3>
-                <p>A custom addon for Minecraft with powerful features.</p>
-                <button onclick="window.location.href='https://discord.com/users/sonite12';">Buy Now</button>
-            </div>
-            <!-- Add more addon items here as you like -->
-        </section>
+    <!-- Google Sign-In Button -->
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-        <section id="services">
-            <h2>Setup Worlds & Services</h2>
-            <p>Need help setting up your Minecraft worlds or server? We offer custom world setups and server configurations.</p>
-            <!-- Example service -->
-            <div class="service-item">
-                <h3>Custom World Setup</h3>
-                <p>We will create a world tailored to your specific needs and requirements!</p>
-                <button onclick="window.location.href='https://discord.com/users/sonite12';">Contact Us</button>
-            </div>
-        </section>
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            var email = profile.getEmail();
+            console.log("Email: " + email); // Log user email
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Have questions or need support? Reach out to me on Discord!</p>
-            <button onclick="window.location.href='https://discord.com/users/sonite12';">Contact on Discord</button>
-        </section>
-    </main>
+            // Check if user is the admin (goodspotff@gmail.com)
+            if (email === "goodspotff@gmail.com") {
+                // If admin, show upload form
+                showAdminUploadForm();
+            } else {
+                // If regular user, show buy options
+                showUserBuyOptions();
+            }
+        }
 
-    <footer>
-        <p>© 2025 My Minecraft Addons Store | All Rights Reserved</p>
-    </footer>
+        // Admin Upload Form (for admins only)
+        function showAdminUploadForm() {
+            document.getElementById("admin-upload").style.display = "block";
+            document.getElementById("user-buy-options").style.display = "none"; // Hide buy options
+        }
+
+        // User Buy Options (for normal users only)
+        function showUserBuyOptions() {
+            document.getElementById("user-buy-options").style.display = "block";
+            document.getElementById("admin-upload").style.display = "none"; // Hide admin upload form
+        }
+    </script>
+
+    <!-- Admin Upload Form (hidden initially) -->
+    <div id="admin-upload" style="display: none;">
+        <h2>Upload New Addon</h2>
+        <form>
+            <input type="text" placeholder="Addon Title" id="addon-title" required><br><br>
+            <textarea placeholder="Addon Description" id="addon-description" required></textarea><br><br>
+            <input type="file" id="addon-image" accept="image/*" required><br><br>
+            <button type="submit">Upload Addon</button>
+        </form>
+    </div>
+
+    <!-- Addon Cards for Users -->
+    <div id="user-buy-options" style="display: none;">
+        <!-- Example Addon Card -->
+        <div class="addon-card">
+            <img src="addon1.jpg" alt="Addon Image">
+            <h3>Addon Title</h3>
+            <p>Addon Description</p>
+            <button onclick="window.location.href='https://discord.com/users/sonite12'">Buy and Join Discord</button>
+        </div>
+    </div>
 
 </body>
 </html>
-
